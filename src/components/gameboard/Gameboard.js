@@ -1,44 +1,87 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
+import "./Gameboard.css";
 import Card from "../card/Card";
+import { FruitImages, Difficulty } from "../../utils";
 
-const Gameboard = ({}) => {
-    const fruits = [0,1,2, 2,1,0]
-    const [matched, setMatched] = useState([])
-    const [match1, setMatch1] = useState({})
+const Gameboard = ({
+  onReset = () => {},
+  fruit = [],
+  onWin = () => {},
+  difficulty = Difficulty.easy
+}) => {
+  const [matched, setMatched] = useState([]);
+  const [match1, setMatch1] = useState({
+    value: null,
+    index: null
+  });
+  const [match2, setMatch2] = useState({
+    value: null,
+    index: null
+  });
+  const [showAll, setShowAll] = useState(true);
 
-    const cardSelected = ({value, index, flipped}) => {
-        if(!flipped) {
-            checkMatched({value, index})
-        }
-    }
+  useEffect(() => {
+    setMatched([]);
+    //Give the player "difficulty" seconds to memorize the app
+    setShowAll(true);
+    setTimeout(() => setShowAll(false), difficulty * 1000);
+  }, [fruit, difficulty]);
 
-    const renderCard = (item, index) => {
-        let flipped = false
-        if(matched.includes(item)) {
-            flipped = true
-        } else if (match1.index === index) {
-            flipped = true
-        }
+  useEffect(() => {
+    setMatch1({});
+    setMatch2({});
+  }, [matched]);
 
-        return <Card backSide={<div>{item}</div>} isFlipped={flipped} onClick={() => cardSelected({value: item, index, flipped})}/>
-    }
-
-    const checkMatched = ({value, index}) => {
-        if(!matched.includes(value)) {
-            if(!match1.value) {
-                setMatch1({value, index})
+  const cardSelected = ({ value, index }) => {
+    if (!match1.value) {
+      setMatch1({ value, index });
+    } else if (match1.value && !match2.value) {
+      setMatch2({ value, index });
+      //Set timeout to allow for flip animation to complete
+      setTimeout(() => {
+        if (!matched.includes(value)) {
+          if (match1.value === value) {
+            const newMatched = [...matched, value];
+            //Matched items length reaching half fruit length means play found all couples
+            if (newMatched.length === fruit.length / 2) {
+              onWin();
             } else {
-                if (match1.value === value) {
-                    setMatched([...matched, value])
-                }
+              setMatched(newMatched);
             }
+          } else {
+            setMatch2({});
+            setMatch1({});
+          }
         }
-        setMatch1({})
+      }, 700);
+    }
+  };
+
+  const renderCard = (item, index) => {
+    let flipped = false;
+    if (
+      index === match1.index ||
+      index === match2.index ||
+      matched.includes(item)
+    ) {
+      flipped = true;
     }
 
-    return <div style={{display:"flex", flexWrap: "wrap", justifyContent: "center", alignItems:"center"}}>
-        {fruits.map(renderCard)}
-    </div>
-}
+    return (
+      <Card
+        key={index}
+        backSide={FruitImages[item]}
+        flipped={flipped || showAll}
+        onClick={() => !flipped && cardSelected({ value: item, index })}
+      />
+    );
+  };
 
-export default Gameboard
+  return (
+    <div id="game-board">
+      <div id="cards-container">{fruit.map(renderCard)}</div>
+    </div>
+  );
+};
+
+export default Gameboard;

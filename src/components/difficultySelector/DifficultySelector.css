@@ -1,0 +1,43 @@
+#difficulty-title {
+    font: 2vw sans;
+    font-weight: 900;
+    margin-right: 20px;
+    color: #222
+}
+
+#difficulty-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    border: #222 2px solid;
+    padding: 3vw;
+}
+
+#difficulty-select {
+    width: 100px;
+    height: 30px;
+    font-size: 1vw;
+    margin-bottom: 20px;
+}
+
+#reset-button {
+    font: 2vw sans;
+    font-weight: 900;
+    padding: 5px 15px;
+    margin-top: 25px;
+    border: 2px solid #222;
+    ;
+    cursor: pointer;
+    border-radius: 12px;
+    user-select: none;
+}
+
+#reset-button:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+
+}

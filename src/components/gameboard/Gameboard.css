@@ -1,0 +1,17 @@
+#game-board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#cards-container {
+    display: grid;
+    grid-template-columns: repeat(4, 7vw);
+    grid-template-rows: repeat(4, 9vw);
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+
