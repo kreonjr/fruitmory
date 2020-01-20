@@ -13,25 +13,26 @@ function App() {
     startGame(Difficulty.easy);
   }, []);
 
-  const reset = () => {
-    setShowReset(false);
-    startGame(difficulty);
-  };
-
   const startGame = difficultyLevel => {
     let ids = [];
     for (let i = 1; i <= difficultyLevel; i++) {
       ids.push(i);
     }
     setDifficulty(difficultyLevel);
+    setShowReset(false);
     setFruit(shuffle(ids));
+  };
+
+  const reset = () => {
+    setShowReset(false);
+    startGame(difficulty);
   };
 
   return (
     <div className="App">
-      <div>
+      <label>
         <center id="title">fruitmory</center>
-      </div>
+      </label>
       <Gameboard
         onWin={() => setShowReset(true)}
         fruit={fruit}

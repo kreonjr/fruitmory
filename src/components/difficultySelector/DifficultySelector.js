@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import "./DifficultySelector.css";
 import { Difficulty } from "../../utils";
 
@@ -20,9 +20,15 @@ const DifficultySelector = ({
         <option value={Difficulty.hard}>Hard</option>
       </select>
       {showReset && (
-        <div id="reset-button" onClick={onReset}>
-          Restart
-        </div>
+        <Fragment>
+          <div id="separator" />
+          <label id="win-label" className="bounce">
+            Great Job! Try again?
+          </label>
+          <div id="reset-button" onClick={onReset}>
+            <label>Restart</label>
+          </div>
+        </Fragment>
       )}
     </div>
   );

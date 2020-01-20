@@ -1,10 +1,3 @@
-#difficulty-title {
-    font: 2vw sans;
-    font-weight: 900;
-    margin-right: 20px;
-    color: #222
-}
-
 #difficulty-container {
     display: flex;
     align-items: center;
@@ -17,15 +10,29 @@
     padding: 3vw;
 }
 
+#difficulty-title {
+    font: 2vw sans;
+    font-weight: 900;
+    margin-right: 20px;
+    color: #222
+}
+
 #difficulty-select {
-    width: 100px;
-    height: 30px;
+    width: 10vw;
+    height: 2vw;
     font-size: 1vw;
-    margin-bottom: 20px;
+    margin: 10px 0;
+}
+
+#separator {
+    width: 100%;
+    height: 1px;
+    margin: 10px 0;
+    background-color: #222;
 }
 
 #reset-button {
-    font: 2vw sans;
+    font: 1.5vw sans;
     font-weight: 900;
     padding: 5px 15px;
     margin-top: 25px;
@@ -39,5 +46,32 @@
 #reset-button:active {
     box-shadow: 0 5px #666;
     transform: translateY(4px);
+}
 
+#win-label {
+    font-size: 1.5vw;
+    margin-top: 10px;
+    animation-duration: 1s;
+}
+
+@keyframes bounce {
+    0% {
+        transform: scale(0.3);
+    }
+
+    50% {
+        transform: scale(1.3);
+    }
+
+    80% {
+        transform: scale(0.9);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.bounce {
+    animation-name: bounce;
 }
