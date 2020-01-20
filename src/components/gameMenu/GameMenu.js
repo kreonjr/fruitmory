@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
-import "./DifficultySelector.css";
+import "./GameMenu.css";
 import { Difficulty } from "../../utils";
 
-const DifficultySelector = ({
+const GameMenu = ({
   setDifficulty = () => {},
   onReset,
   showReset
@@ -12,7 +12,7 @@ const DifficultySelector = ({
   };
 
   return (
-    <div id="difficulty-container">
+    <div id="menu-container">
       <label id="difficulty-title">Select a difficulty:</label>
       <select name="difficulty" id="difficulty-select" onChange={valueChange}>
         <option value={Difficulty.easy}>Easy</option>
@@ -34,4 +34,4 @@ const DifficultySelector = ({
   );
 };
 
-export default DifficultySelector;
+export default GameMenu;

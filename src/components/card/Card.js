@@ -1,9 +1,17 @@
 import React from "react";
 import "./Card.css";
 
-const Card = ({ backSide = null, flipped = false, onClick = () => {} }) => {
+const Card = ({
+  backSide = null,
+  flipped = false,
+  onClick = () => {},
+  matched = false
+}) => {
   return (
-    <div className="card-container" onClick={onClick}>
+    <div
+      className={`card-container ${matched ? "matched" : ""}`}
+      onClick={onClick}
+    >
       <div id="cardBody" className={`card-body ${flipped ? "flip" : ""}`}>
         <div className="card-side side-back">
           <img src={backSide} className="image" alt={`fruit${backSide}`} />

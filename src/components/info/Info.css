@@ -1,0 +1,26 @@
+#info-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: #222 2px solid;
+    padding: 1vw;
+    margin-top: 5vh;
+}
+
+#title {
+    font-size: 4vw;
+    font-weight: 900;
+    color: #222;
+}
+
+#instructions-title {
+    font-size: 1.6vw;
+    text-decoration: underline;
+}
+
+#instructions {
+    font-size: 0.8vw;
+    font-family: serif;
+    text-align: left;
+}

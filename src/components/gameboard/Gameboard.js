@@ -45,9 +45,9 @@ const Gameboard = ({
             //Matched items length reaching half fruit length means play found all couples
             if (newMatched.length === fruit.length / 2) {
               onWin();
-            } else {
-              setMatched(newMatched);
             }
+
+            setMatched(newMatched);
           } else {
             setMatch2({});
             setMatch1({});
@@ -72,6 +72,7 @@ const Gameboard = ({
         key={index}
         backSide={FruitImages[item]}
         flipped={flipped || showAll}
+        matched={matched.includes(item)}
         onClick={() => !flipped && cardSelected({ value: item, index })}
       />
     );

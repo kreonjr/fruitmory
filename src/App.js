@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Gameboard from "./components/gameboard/Gameboard";
-import DifficutySelector from "./components/difficultySelector/DifficultySelector";
+import GameMenu from "./components/gameMenu/GameMenu";
 import { shuffle, Difficulty } from "./utils";
+import Info from "./components/info/Info";
 
 function App() {
   const [fruit, setFruit] = useState([]);
@@ -30,15 +31,13 @@ function App() {
 
   return (
     <div className="App">
-      <label>
-        <center id="title">fruitmory</center>
-      </label>
+      <Info />
       <Gameboard
         onWin={() => setShowReset(true)}
         fruit={fruit}
         difficulty={difficulty}
       />
-      <DifficutySelector
+      <GameMenu
         setDifficulty={startGame}
         showReset={showReset}
         onReset={reset}
