@@ -5,7 +5,9 @@ Try to beat all 3 difficulties and have fun!
 
 ## Available Scripts
 
-In the project directory, you can run:
+### `yarn install`
+
+Install all dependencies needed for the project to run.<br />
 
 ### `yarn start`
 
